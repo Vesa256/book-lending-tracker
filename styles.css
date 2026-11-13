@@ -1,0 +1,111 @@
+/* ==========================================================
+   UI CSS Library
+   Reusable, class-based styles. All classes are prefixed "ui-".
+   Design tokens live in :root so the look stays consistent.
+   ========================================================== */
+
+:root {
+  --ui-bg: #f5f6f8;
+  --ui-surface: #ffffff;
+  --ui-text: #1d2433;
+  --ui-muted: #5b6477;
+  --ui-border: #d5d9e2;
+  --ui-primary: #1f4e8c;
+  --ui-primary-dark: #163a68;
+  --ui-danger: #b3261e;
+  --ui-danger-bg: #fdecea;
+  --ui-success: #1e7a46;
+  --ui-success-bg: #e6f4ec;
+  --ui-radius: 6px;
+  --ui-space: 1rem;
+  --ui-font: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Layout */
+.ui-page {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  line-height: 1.5;
+}
+.ui-container { width: 100%; max-width: 62rem; margin: 0 auto; padding: 0 var(--ui-space); }
+.ui-stack { display: flex; flex-direction: column; gap: 1.5rem; flex: 1; padding-top: 1.5rem; padding-bottom: 1.5rem; }
+
+/* Header and footer */
+.ui-header { background: var(--ui-primary); color: #fff; padding: 1.5rem 0; }
+.ui-footer { background: var(--ui-surface); border-top: 1px solid var(--ui-border); color: var(--ui-muted); padding: 1rem 0; font-size: 0.9rem; }
+.ui-footer p { margin: 0; }
+
+/* Typography */
+.ui-title { margin: 0; font-size: 1.75rem; }
+.ui-subtitle { margin: 0.25rem 0 0; opacity: 0.9; }
+.ui-heading { margin: 0 0 1rem; font-size: 1.25rem; }
+
+/* Card */
+.ui-card {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+  padding: 1.25rem;
+}
+
+/* Form */
+.ui-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+.ui-field { display: flex; flex-direction: column; gap: 0.25rem; }
+.ui-field-action { justify-content: flex-end; }
+.ui-label { font-weight: 600; font-size: 0.95rem; }
+.ui-input {
+  font: inherit;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+  background: #fff;
+  color: var(--ui-text);
+}
+.ui-input:focus-visible, .ui-btn:focus-visible { outline: 3px solid #8db4e8; outline-offset: 1px; }
+.ui-input-invalid { border-color: var(--ui-danger); background: var(--ui-danger-bg); }
+.ui-error { min-height: 1.2em; color: var(--ui-danger); font-size: 0.85rem; }
+
+/* Buttons */
+.ui-btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--ui-radius);
+  cursor: pointer;
+}
+.ui-btn-primary { background: var(--ui-primary); color: #fff; }
+.ui-btn-primary:hover { background: var(--ui-primary-dark); }
+.ui-btn-secondary { background: #fff; color: var(--ui-primary); border-color: var(--ui-primary); padding: 0.3rem 0.7rem; }
+.ui-btn-secondary:hover { background: #eef3fa; }
+
+/* Summary */
+.ui-summary { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+.ui-stat { flex: 1 1 10rem; display: flex; flex-direction: column; padding: 0.75rem 1rem; border: 1px solid var(--ui-border); border-radius: var(--ui-radius); background: var(--ui-bg); }
+.ui-stat-value { font-size: 1.75rem; font-weight: 700; }
+.ui-stat-label { color: var(--ui-muted); font-size: 0.9rem; }
+.ui-stat-alert .ui-stat-value { color: var(--ui-danger); }
+
+/* Table */
+.ui-table-wrap { overflow-x: auto; }
+.ui-table { width: 100%; border-collapse: collapse; min-width: 40rem; }
+.ui-table th, .ui-table td { padding: 0.6rem 0.75rem; text-align: left; border-bottom: 1px solid var(--ui-border); }
+.ui-table th { background: var(--ui-bg); font-size: 0.9rem; }
+.ui-empty { margin: 1rem 0 0; color: var(--ui-muted); }
+.ui-hidden { display: none; }
+
+/* Badges */
+.ui-badge { display: inline-block; padding: 0.1rem 0.6rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+.ui-badge-ok { background: var(--ui-success-bg); color: var(--ui-success); }
+.ui-badge-danger { background: var(--ui-danger-bg); color: var(--ui-danger); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
