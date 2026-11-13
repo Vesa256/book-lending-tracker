@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Lending Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="ui-page">
+
+  <header class="ui-header">
+    <div class="ui-container">
+      <h1 class="ui-title">Book Lending Tracker</h1>
+      <p class="ui-subtitle">Keep track of which books you lent, to whom, and when they are due back.</p>
+    </div>
+  </header>
+
+  <main class="ui-container ui-stack">
+
+    <section class="ui-card" aria-labelledby="form-heading">
+      <h2 class="ui-heading" id="form-heading">Lend a book</h2>
+
+      <form id="loan-form" class="ui-form" novalidate>
+        <div class="ui-field">
+          <label class="ui-label" for="title">Title</label>
+          <input class="ui-input" type="text" id="title" name="title" required>
+          <span class="ui-error" id="title-error" role="alert"></span>
+        </div>
+
+        <div class="ui-field">
+          <label class="ui-label" for="author">Author</label>
+          <input class="ui-input" type="text" id="author" name="author" required>
+          <span class="ui-error" id="author-error" role="alert"></span>
+        </div>
+
+        <div class="ui-field">
+          <label class="ui-label" for="borrower">Borrower</label>
+          <input class="ui-input" type="text" id="borrower" name="borrower" required>
+          <span class="ui-error" id="borrower-error" role="alert"></span>
+        </div>
+
+        <div class="ui-field">
+          <label class="ui-label" for="dueDate">Due date</label>
+          <input class="ui-input" type="date" id="dueDate" name="dueDate" required>
+          <span class="ui-error" id="dueDate-error" role="alert"></span>
+        </div>
+
+        <div class="ui-field">
+          <label class="ui-label" for="genre">Genre</label>
+          <select class="ui-input" id="genre" name="genre" required>
+          <option value="" selected disabled>Choose a genre</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Science">Science</option>
+          <option value="History">History</option>
+          <option value="Technology">Technology</option>
+          </select>
+          <span class="ui-error" id="genre-error" role="alert"></span>
+        </div>
+
+        <div class="ui-field ui-field-action">
+          <button class="ui-btn ui-btn-primary" type="submit">Add loan</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="ui-card" aria-labelledby="loans-heading">
+      <h2 class="ui-heading" id="loans-heading">Lent books</h2>
+
+      <div class="ui-summary" id="summary">
+        <div class="ui-stat">
+          <span class="ui-stat-value" id="total-loans">0</span>
+          <span class="ui-stat-label">Total loans</span>
+        </div>
+        <div class="ui-stat ui-stat-alert">
+          <span class="ui-stat-value" id="overdue-loans">0</span>
+          <span class="ui-stat-label">Overdue loans</span>
+        </div>
+      </div>
+
+      <div class="ui-table-wrap">
+        <table class="ui-table">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Borrower</th>
+              <th scope="col">Due date</th>
+              <th scope="col">Genre</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="loan-rows"></tbody>
+        </table>
+      </div>
+      <p class="ui-empty" id="empty-message">No books are lent out yet.</p>
+    </section>
+
+  </main>
+
+  <footer class="ui-footer">
+    <div class="ui-container">
+      <p>Book Lending Tracker. Built with HTML, CSS and JavaScript.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    BookLib.createTracker({
+      form: '#loan-form',
+      rows: '#loan-rows',
+      empty: '#empty-message',
+      total: '#total-loans',
+      overdue: '#overdue-loans'
+    });
+  </script>
+</body>
+</html>
